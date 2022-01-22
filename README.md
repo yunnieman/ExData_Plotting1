@@ -95,20 +95,37 @@ The four plots that you will need to construct are shown below.
 ### Plot 1
 
 
-![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2.png) 
+`par(mfrow = c(1,1), mar = c(5,4.5,4,2))
+hist(housepc$Global_active_power, col = "red", main = "Global Active Power", xlab = "Global Active Power (kilowatts)")`
 
 
 ### Plot 2
 
-![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3.png) 
+`par(mfrow = c(1,1), mar = c(5,4.5,4,2))
+plot(housepc$Time,housepc$Global_active_power, ylab = "Global Active Power (kilowatts)", xlab = "", pch = ".", type = "l")`
 
 
 ### Plot 3
 
-![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4.png) 
+`par(mfrow = c(1,1), mar = c(4,4,4,2))
+plot(housepc$Time,housepc$Sub_metering_1, ylab = "Energy sub metering", xlab = "", type = "l", col = "black")
+points(housepc$Time, housepc$Sub_metering_2, col = "red", type = "l")
+points(housepc$Time, housepc$Sub_metering_3, col = "blue", type = "l")
+legend("topright", lwd = 1, col = c("black", "red", "blue"), legend = names(housepc[ ,7:9]))`
 
 
 ### Plot 4
 
-![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5.png) 
+`par(mfcol = c(2,2), mar = c(4.5,5,2,2))
+
+plot(housepc$Time, housepc$Global_active_power, ylab = "Global Active Power (kilowatts)", xlab = "", pch = ".", type = "l")
+
+plot(housepc$Time, housepc$Sub_metering_1, ylab = "Energy sub metering", xlab = "", type = "l", col = "black")
+points(housepc$Time, housepc$Sub_metering_2, col = "red", type = "l")
+points(housepc$Time, housepc$Sub_metering_3, col = "blue", type = "l")
+legend("topright", lwd = 1, col = c("black", "red", "blue"), legend = names(housepc[,7:9]), bty = "n")
+
+plot(housepc$Time, housepc$Voltage, ylab = "Voltage", xlab = "datetime", type = "l")
+
+plot(housepc$Time, housepc$Global_reactive_power, ylab = "Global_reactive_power", xlab = "datetime", type="l")`
 
